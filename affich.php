@@ -10,3 +10,5 @@ $affichOrder=$query2->fetchAll();
 
 
 include "checkout.phtml";
+
+

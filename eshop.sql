@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 21 déc. 2021 à 07:21
+-- Généré le : lun. 14 mars 2022 à 15:21
 -- Version du serveur : 10.4.22-MariaDB
--- Version de PHP : 7.4.26
+-- Version de PHP : 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -71,7 +71,9 @@ INSERT INTO `orderlines` (`id`, `order_id`, `product_id`, `quantity`, `prix`) VA
 (18, 9, 13, 1, 60),
 (19, 9, 10, 1, 50),
 (22, 12, 7, 5, 140),
-(25, 15, 6, 1, 140);
+(25, 15, 6, 1, 140),
+(38, 24, 10, 1, 50),
+(39, 26, 12, 2, 120);
 
 -- --------------------------------------------------------
 
@@ -105,7 +107,11 @@ INSERT INTO `orders` (`id`, `user_id`, `total`, `created_at`) VALUES
 (12, 6, 840, '2021-12-16'),
 (13, 6, 140, '2021-12-16'),
 (14, 6, 280, '2021-12-16'),
-(15, 7, 2380, '2021-12-18');
+(15, 7, 2380, '2021-12-18'),
+(24, 6, 470, '2022-03-06'),
+(25, 6, 0, '2022-03-06'),
+(26, 6, 240, '2022-03-06'),
+(27, 6, 0, '2022-03-06');
 
 -- --------------------------------------------------------
 
@@ -139,7 +145,8 @@ INSERT INTO `products` (`id`, `category_id`, `nom`, `couleur`, `size`, `genre`, 
 (10, 1, 'Thermo Ball Etip Gloves', 'doré', 'standard', 'male', 50, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, optio dolorum, maxime aut amet eligendi dolores nesciunt quos libero cupiditate dicta corrupti voluptatibus veritatis nisi facilis magni unde impedit? Odit!', 'watch9.png', '2021-12-12 16:13:51'),
 (11, 1, 'Thermo Ball Etip Gloves', 'silver', 'standard', 'male', 140, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, optio dolorum, maxime aut amet eligendi dolores nesciunt quos libero cupiditate dicta corrupti voluptatibus veritatis nisi facilis magni unde impedit? Odit!', 'watch10.png', '2021-12-12 16:13:51'),
 (12, 2, 'Thermo Ball Etip Gloves', 'bleu', 'standard', 'male', 120, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, optio dolorum, maxime aut amet eligendi dolores nesciunt quos libero cupiditate dicta corrupti voluptatibus veritatis nisi facilis magni unde impedit? Odit!', 'homme2.jpg', '2021-12-12 16:13:51'),
-(13, 1, 'Thermo Ball Etip Gloves', 'doré', 'standard', 'male', 60, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, optio dolorum, maxime aut amet eligendi dolores nesciunt quos libero cupiditate dicta corrupti voluptatibus veritatis nisi facilis magni unde impedit? Odit!', 'watch11.png', '2021-12-12 16:13:51');
+(13, 1, 'Thermo Ball Etip Gloves', 'doré', 'standard', 'male', 60, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, optio dolorum, maxime aut amet eligendi dolores nesciunt quos libero cupiditate dicta corrupti voluptatibus veritatis nisi facilis magni unde impedit? Odit!', 'watch11.png', '2021-12-12 16:13:51'),
+(17, 2, 'clothes', 'red', '120', '120', 120, 'choix', '1640959068gallery3.jpg', '2021-12-31 13:57:48');
 
 -- --------------------------------------------------------
 
@@ -164,7 +171,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `phone`, `address`, `roles`) VALUES
 (5, 'med med', 'med@gmail.com', '$2y$10$5FnFx2BvSpBNjQt/gtN0OupfK.hAQJF/tZgsqHLhHcubmmiZemcFS', 1452789, 'qsdqsdqsdqsd', '0'),
 (6, 'jbeli basma', 'jbelibasma22@gmail.com', '$2y$10$YtCJjTI5g8c8zTMMP.t.2e.l633RTLhz6LlHVE2LPu2Y1B/8s2Csi', 58662695, 'avenuarianae mostfa mohsen', '1'),
-(7, 'basma', 'basma@gmail.com', '$2y$10$s1l6lPLUgtTGZts8108xAuwp0CYuWsJfz5seWvHnGO7Ba7JP8ob2C', 0, 'khfhfEFE', '0');
+(7, 'basma', 'basma@gmail.com', '$2y$10$s1l6lPLUgtTGZts8108xAuwp0CYuWsJfz5seWvHnGO7Ba7JP8ob2C', 0, 'khfhfEFE', '0'),
+(8, 'jbeli basma', 'souad@gmail.com', '$2y$10$PC2W/Zh5t9IVjWHrkRe5oeD7H6qlOFR3TUkiExccfYvqW2FoQoDbm', 58662695, 'avenue mostfa mohsen', '0');
 
 --
 -- Index pour les tables déchargées
@@ -219,25 +227,25 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT pour la table `orderlines`
 --
 ALTER TABLE `orderlines`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT pour la table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT pour la table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Contraintes pour les tables déchargées
